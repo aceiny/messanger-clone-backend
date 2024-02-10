@@ -20,20 +20,20 @@ $ npm run start:prod
 ## about this project
 response time : 80ms-150ms-500ms
 
-/auth/signup //POST user signup
-
+###/auth/login  //POST user login
 <details>
-/auth/login  //POST user login
 <summary><code>Json Object</code></summary>
-```tsx
-login : {
+```json
+{
+    login : {
     Username: string;
     Password: string // min length 8
     }
+}
 ```
 </details>
+###/auth/signup  //POST user signup
 <details>
-/auth/signup  //POST user signup
 <summary><code>Json Object</code></summary>
 ```tsx
 Signup : {
