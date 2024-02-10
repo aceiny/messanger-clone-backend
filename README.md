@@ -24,10 +24,11 @@ response time : 80ms-150ms-500ms
 /auth/signup //POST user signup
 
 <details>
-<summary><code>NewThread</code></summary>
-```typescript
+<summary><code>Json Object</code></summary>
+```tsx
 login : {
     Username: string;
-    Password: string // min length 8}
+    Password: string // min length 8
+    }
 ```
 </details>
