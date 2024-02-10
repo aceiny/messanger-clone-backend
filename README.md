@@ -24,7 +24,6 @@ response time : 80ms-150ms-500ms
 <details>
 <summary><code>Json Object</code></summary>
 
-```json
 {
     login : {
     Username: string;
