@@ -18,7 +18,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 ## about this project
-```bash
 response time : 80ms-150ms-500ms
 
 /auth/login  //POST user login
