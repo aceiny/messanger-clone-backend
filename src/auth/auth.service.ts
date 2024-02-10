@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from './Dtos/SignUpDto';
 import { LoginDto} from './Dtos/LoginDto';
+import { JwtDto } from './Dtos/jwt.dto';
 @Injectable()
 export class AuthService {
     constructor(
@@ -14,7 +15,7 @@ export class AuthService {
         private jwtService : JwtService
     ) {}
 
-    async Signup(SignUpDto : SignUpDto) : Promise<{}> {
+    async Signup(SignUpDto : SignUpDto) : Promise<JwtDto> {
         const exist = await this.userModel.findOne({ Username : SignUpDto.Username})
         if(exist){
             throw new ConflictException('Username already exist')
@@ -32,14 +33,14 @@ export class AuthService {
         return { 
             Status : 200 , 
             Token : this.jwtService.sign({
-                id : user._id,
+                Id : user._id,
                 Username : user.Username,
                 Name : user.Name
             }),
         }
     }
 
-    async Login(LoginDto : LoginDto) : Promise<{}> {
+    async Login(LoginDto : LoginDto) : Promise<JwtDto> {
         const user = await this.userModel.findOne({Username : LoginDto.Username})
         if(!user){
             throw new UnauthorizedException('Username not exist')
@@ -50,7 +51,7 @@ export class AuthService {
         return { 
             Status : 200 , 
             Token : this.jwtService.sign({
-                id : user._id,
+                Id : user._id,
                 Username : user.Username,
                 Name : user.Name
             }),

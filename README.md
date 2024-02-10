@@ -45,8 +45,37 @@ To deploy this project run
 | `Username` | `string` |
 | `Passsword` | `string` |
 
+#### Create Chat
 
+```http
+  POST /chat  'require auth'
+```
 
+| Parameter | Type     |
+| :-------- | :------- |
+| `Name`    | `string` |
+| `IsGroup` | `boolean` |
+| `ImageUrl`| `string` |
+|`Participants`| `array` |
+
+#### Get all my chats
+
+```http
+  Get /chat  'require auth'
+```
+#### Get a single Chat
+
+```http
+  Get /chat/:ChatId  'require auth'
+```
+#### Send a new message
+```http
+  POST /message/:ChatId  'require auth'
+```
+
+| Parameter | Type     |
+| :-------- | :------- |
+| `Message`    | `string` |
 
 ## Environment Variables
 
