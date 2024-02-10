@@ -1,48 +1,58 @@
-#Rest API for messanger clone built using nest js 
-##a fully funcitonel api that you can use to create a real time messanger clone or any chat app clone 
-*signup and signin
-*send's read and delete messages
-*evrything is realtime
+
+# What is This ? 
+this is a fully funcitonel api that you can use to create a real time messanger clone or any chat app clone 
+
 
 ## Installation
 ```bash
 $ npm install
 ```
-## Running the app
+## development
 ```bash
-# development
-$ npm run start
-# watch mode
 $ npm run start:dev
-# production mode
-$ npm run start:prod
 ```
-## about this project
-response time : 80ms-150ms-500ms
+## Deployment
 
-### auth/login  //POST user login
-<details>
-<summary><code>Json Object</code></summary>
+To deploy this project run
 
-{
-    login : {
-    Username: string;
-    Password: string // min length 8
-    }
-}
+```bash
+  npm run start:prod
+```
 
-</details>
 
-### auth/signup  //POST user signup
-<details>
-<summary><code>Json Object</code></summary>
-```json
-{
-    Signup : {
-    Name : string ;
-    Username: string;
-    Password: string
-    } 
-}
+## API Reference
 
-</details>
+#### Signup new user
+
+```http
+  POST /auth/signup
+```
+
+| Parameter | Type     |
+| :-------- | :------- |
+| `Name` | `string` |
+| `Username` | `string` |
+| `Passsword` | `string` |
+
+#### Login user
+
+```http
+  GET /auth/login
+```
+
+| Parameter | Type     |
+| :-------- | :------- |
+| `Username` | `string` |
+| `Passsword` | `string` |
+
+
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`JWT_SECRET`
+
+`MONGO_URI`
+
