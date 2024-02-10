@@ -23,23 +23,12 @@ response time : 80ms-150ms-500ms
 
 /auth/login  //POST user login
 /auth/signup //POST user signup
-```signup 
-// { 
-    Name : string
-    Username : string
-    Password  : string //min length 8 
-    }
-```login 
-// {
-    Username: string;
-    Password: string // min length 8}
 
 <details>
-  <summary>Click to show code</summary>
-  
-  ```javascript
-  // {
+<summary><code>NewThread</code></summary>
+```ts
+login : {
     Username: string;
     Password: string // min length 8}
-</details>
 ```
+</details>
