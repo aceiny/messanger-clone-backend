@@ -4,6 +4,7 @@ import { LoginDto} from './Dtos/LoginDto';
 import { SignUpDto } from './Dtos/SignUpDto';
 import { AuthGuard } from '@nestjs/passport';
 import { query } from 'express';
+import { GetUser } from './get-user.decorator';
 
 @Controller('auth')
 export class AuthController {
@@ -33,5 +34,10 @@ export class AuthController {
     @Get('')
     GetUsers(@Query() query : any){
         return this.authService.GetUsers(query)
+    }
+    @Get('/user')
+    @UseGuards(AuthGuard())
+    GetUser(@GetUser() user : any){
+        return this.authService.GetUser(user)
     }
 }

@@ -67,5 +67,11 @@ export class AuthService {
         } , ('-Password')).limit(50)
         return users
     }
+    async GetUser(user : any) : Promise<User>{
+        const { Id } = user
+        const userDetail = await this.userModel.findById(Id, ('-Password'))
+        if(!userDetail) throw new UnauthorizedException('User not found')
+        return userDetail
+    }
 
 }
