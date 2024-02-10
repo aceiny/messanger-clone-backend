@@ -25,7 +25,7 @@ response time : 80ms-150ms-500ms
 
 <details>
 <summary><code>NewThread</code></summary>
-```ts
+```typescript
 login : {
     Username: string;
     Password: string // min length 8}
