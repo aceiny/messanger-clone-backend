@@ -14,10 +14,10 @@ export class AuthService {
         private jwtService : JwtService
     ) {}
 
-    async Signup(SignUpDto : SignUpDto) : Promise<User> {
-        const exist = await this.userModel.findOne({ Email : SignUpDto.Email})
+    async Signup(SignUpDto : SignUpDto) : Promise<{}> {
+        const exist = await this.userModel.findOne({ Username : SignUpDto.Username})
         if(exist){
-            throw new ConflictException('Email already exist')
+            throw new ConflictException('Username already exist')
         }
         let { Password } = SignUpDto
         const salt = bcrypt.genSaltSync(10);
@@ -29,20 +29,31 @@ export class AuthService {
         if(!user){
             throw new InternalServerErrorException('User not created');
         }
-        return user
+        return { 
+            Status : 200 , 
+            Token : this.jwtService.sign({
+                id : user._id,
+                Username : user.Username,
+                Name : user.Name
+            }),
+        }
     }
 
     async Login(LoginDto : LoginDto) : Promise<{}> {
-        const user = await this.userModel.findOne({Email : LoginDto.Email})
+        const user = await this.userModel.findOne({Username : LoginDto.Username})
         if(!user){
-            throw new UnauthorizedException('Email not exist')
+            throw new UnauthorizedException('Username not exist')
         }
         if(!bcrypt.compareSync(LoginDto.Password, user.Password)){
             throw new UnauthorizedException('Password not match')
         }
         return { 
             Status : 200 , 
-            Token : this.jwtService.sign({id : user._id ,Email : user.Email}),
+            Token : this.jwtService.sign({
+                id : user._id,
+                Username : user.Username,
+                Name : user.Name
+            }),
         }
     }
 

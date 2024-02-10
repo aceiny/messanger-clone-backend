@@ -8,6 +8,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use('/uploads', serveStatic('uploads'));
   app.useGlobalFilters(new TokenExpiredFilter() , new JsonWebTokenFilter());
-  await app.listen(3000);
+  await app.listen(3005);
 }
 bootstrap();
