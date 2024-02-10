@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use('/uploads', serveStatic('uploads'));
   app.useGlobalFilters(new TokenExpiredFilter() , new JsonWebTokenFilter());
+  app.enableCors();
   await app.listen(3005);
 }
 bootstrap();
