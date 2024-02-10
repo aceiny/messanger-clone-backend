@@ -21,8 +21,8 @@ export class Chat  extends Document {
     Participants : Types.ObjectId[];
     @Prop({type : [Message]})
     Messages : Record<string, any>[];
-    @Prop()
-    lastMessage : Record<string, any>[]
+    @Prop({type : Message})
+    LastMessage : Record<string, any>[]
 
 }
 export const ChatSchema = SchemaFactory.createForClass(Chat);
