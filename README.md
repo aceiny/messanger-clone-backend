@@ -34,3 +34,12 @@ response time : 80ms-150ms-500ms
     Username: string;
     Password: string // min length 8}
 
+<details>
+  <summary>Click to show code</summary>
+  
+  ```javascript
+  // {
+    Username: string;
+    Password: string // min length 8}
+</details>
+```
