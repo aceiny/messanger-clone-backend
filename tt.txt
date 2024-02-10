@@ -1,0 +1,12 @@
+Title string
+Description string
+Price number
+EstimatedTime number
+EnterpriseId Types.ObjectId
+Questions Record<string, any>[]
+Budget number
+Masked boolean
+Responses Record<string, any>[]
+CreatedBy Types.ObjectId
+WilayaResponses  Record<string, 7any>[]
+TotalResponses number
