@@ -20,7 +20,7 @@ $ npm run start:prod
 ## about this project
 response time : 80ms-150ms-500ms
 
-###/auth/login  //POST user login
+### auth/login  //POST user login
 <details>
 <summary><code>Json Object</code></summary>
 ```json
@@ -30,9 +30,8 @@ response time : 80ms-150ms-500ms
     Password: string // min length 8
     }
 }
-```
 </details>
-###/auth/signup  //POST user signup
+### auth/signup  //POST user signup
 <details>
 <summary><code>Json Object</code></summary>
 ```tsx
