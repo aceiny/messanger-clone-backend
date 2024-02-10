@@ -57,5 +57,15 @@ export class AuthService {
             }),
         }
     }
+    async GetUsers(query : any) : Promise<User[]>{
+        if(!query.search) return []
+        const users = await this.userModel.find({
+            $or : [
+                { Username : { $regex : query.search , $options : 'i'}},
+                { Name : { $regex : query.search , $options : 'i'}}
+            ]
+        } , ('-Password')).limit(50)
+        return users
+    }
 
 }

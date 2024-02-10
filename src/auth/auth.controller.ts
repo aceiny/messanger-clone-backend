@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post,  UseGuards,  UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Post,  Query,  UseGuards,  UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto} from './Dtos/LoginDto';
 import { SignUpDto } from './Dtos/SignUpDto';
 import { AuthGuard } from '@nestjs/passport';
+import { query } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -28,5 +29,9 @@ export class AuthController {
             Status : 200,
             Message : "Token is valid"
         }
+    }
+    @Get('')
+    GetUsers(@Query() query : any){
+        return this.authService.GetUsers(query)
     }
 }
