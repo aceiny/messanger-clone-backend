@@ -23,6 +23,7 @@ response time : 80ms-150ms-500ms
 ### auth/login  //POST user login
 <details>
 <summary><code>Json Object</code></summary>
+
 ```json
 {
     login : {
@@ -30,15 +31,19 @@ response time : 80ms-150ms-500ms
     Password: string // min length 8
     }
 }
+
 </details>
+
 ### auth/signup  //POST user signup
 <details>
 <summary><code>Json Object</code></summary>
-```tsx
-Signup : {
+```json
+{
+    Signup : {
     Name : string ;
     Username: string;
     Password: string
-    }
-```
+    } 
+}
+
 </details>
