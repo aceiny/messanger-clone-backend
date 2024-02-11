@@ -4,7 +4,9 @@ import { ChatService } from "./chat.service";
 import { UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 
-@WebSocketGateway()
+@WebSocketGateway({
+    cors : true
+})
 export class ChatGateway {
     constructor(
         private chatService : ChatService
