@@ -23,19 +23,18 @@ export class ChatGateway {
     @SubscribeMessage("leave")
     async createChat(client : Socket , payload : any) : Promise<any>{
         client.leave(payload.chatId);
-        console.log(client.rooms)
         this.server.to(payload.chatId).emit("left" , payload.chatId);
     }
 
     @SubscribeMessage("join")
     async joinChat(client : Socket , payload : any) : Promise<any>{
-        client.join(payload.chatId);
-        console.log(client.rooms)
+        payload.chats.forEach((room : string) => {
+            client.join(room);
+        })
         this.server.to(payload.chatId).emit("joined" , payload.chatId);
     }
-    @SubscribeMessage("chat")
+    @SubscribeMessage("message")
     handleMessage(client : Socket , payload : any) : any{
-        console.log(client.rooms)
-        this.server.emit("message" , payload)
+        client.broadcast.to(payload.chatId).emit("message" , payload);
     }
 }
